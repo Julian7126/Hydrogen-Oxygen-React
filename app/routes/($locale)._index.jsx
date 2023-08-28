@@ -24,7 +24,7 @@ export async function loader({params, context}) {
   }
 
   const {shop, hero} = await context.storefront.query(HOMEPAGE_SEO_QUERY, {
-    variables: {handle: 'freestyle'},
+    variables: {handle: 'hydrogen'}, //BANNER DE PAGINA DE INICIO
   });
 
   const seo = seoPayload.home();
@@ -179,7 +179,7 @@ const COLLECTION_CONTENT_FRAGMENT = `#graphql
   }
   ${MEDIA_FRAGMENT}
 `;
-
+//COPAIAR ESTE CODIGO EN RUN -TEST INSOMINA
 const HOMEPAGE_SEO_QUERY = `#graphql
   query seoCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
