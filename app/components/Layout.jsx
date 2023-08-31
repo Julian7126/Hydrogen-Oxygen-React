@@ -24,6 +24,8 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
+import CustomAnnouncementBar from './AnnoucementBar';
+
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -210,12 +212,15 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   const params = useParams();
   const {y} = useWindowScroll();
   return (
+
+  <>
+   <CustomAnnouncementBar/>
     <header
       role="banner"
       className={`${
         isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
+        ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
+        : 'bg-contrast/80 text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
       } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
@@ -228,14 +233,14 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           {/* Top level menu items */}
           {(menu?.items || []).map((item) => (
             <Link
-              key={item.id}
-              to={item.to}
-              target={item.target}
-              prefetch="intent"
-              className={({isActive}) =>
-                isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-              }
-            >
+            key={item.id}
+            to={item.to}
+            target={item.target}
+            prefetch="intent"
+            className={({isActive}) =>
+            isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+          }
+          >
               {item.title}
             </Link>
           ))}
@@ -246,22 +251,22 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           method="get"
           action={params.locale ? `/${params.locale}/search` : '/search'}
           className="flex items-center gap-2"
-        >
+          >
           <Input
             className={
               isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
+              ? 'focus:border-contrast/20 dark:focus:border-primary/20'
+              : 'focus:border-primary/20'
             }
             type="search"
             variant="minisearch"
             placeholder="Search"
             name="q"
-          />
+            />
           <button
             type="submit"
             className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
-          >
+            >
             <IconSearch />
           </button>
         </Form>
@@ -269,6 +274,12 @@ function DesktopHeader({isHome, menu, openCart, title}) {
         <CartCount isHome={isHome} openCart={openCart} />
       </div>
     </header>
+   </>
+
+
+
+
+
   );
 }
 
