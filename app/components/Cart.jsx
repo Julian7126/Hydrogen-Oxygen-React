@@ -12,12 +12,14 @@ import {
   FeaturedProducts,
 } from '~/components';
 import {getInputStyleClasses} from '~/lib/utils';
+import ShippingBar from './ShippingBar';
 
 export function Cart({layout, onClose, cart}) {
   const linesCount = Boolean(cart?.lines?.edges?.length || 0);
 
   return (
     <>
+      <ShippingBar/>
       <CartEmpty hidden={linesCount} onClose={onClose} layout={layout} />
       <CartDetails cart={cart} layout={layout} />
     </>
