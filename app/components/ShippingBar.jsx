@@ -2,18 +2,18 @@ import React from 'react';
 import {Money} from '@shopify/hydrogen';
 import {useEffect, useState} from 'react';
 
-const ShippingBar = () => {
-  const minimumSpend = 60;
+const ShippingBar = ({totalAmount}) => {
+  const minimumSpend = 20;
   const [amountAway, setAmountAway] = useState(minimumSpend);
-  const totalSpend = 20;
+  const totalSpend = totalAmount;
   const [remainingPorcent , setRemainginporcent]= useState(10)
 
   useEffect(() => {
-    setAmountAway(Number(minimumSpend) - Number(totalSpend));
+    setAmountAway(Number(minimumSpend) - Number(totalSpend.amount));
   }, [totalSpend]);
 
   useEffect(()=>{
-
+ console.log(amountAway) 
   },[amountAway])
 
   return (
@@ -29,7 +29,7 @@ const ShippingBar = () => {
       <div className="flex flex-row justify-between items-center bg-blue-100 ">
         <p className="text-sm font-medium text-violet-700">
           You are in:{' '}
-          <Money data={{amount: amountAway.toString(), currencyCode: `USD`}} />
+          <Money data={{amount : amountAway.toString(), currencyCode:totalAmount.currencyCode}} />
         </p>
       </div>
 

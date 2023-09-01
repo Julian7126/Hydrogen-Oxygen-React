@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import {useRef} from 'react';
+import {Suspense, useRef} from 'react';
 import {useScroll} from 'react-use';
 import {flattenConnection, CartForm, Image, Money} from '@shopify/hydrogen';
 
@@ -10,16 +10,26 @@ import {
   Text,
   Link,
   FeaturedProducts,
+  CartLoading,
 } from '~/components';
 import {getInputStyleClasses} from '~/lib/utils';
+import {Await} from '@remix-run/react';
 import ShippingBar from './ShippingBar';
 
 export function Cart({layout, onClose, cart}) {
   const linesCount = Boolean(cart?.lines?.edges?.length || 0);
+  console.log(cart?.cost?.totalAmount);
 
   return (
     <>
-      <ShippingBar/>
+      <Suspense fallback={<CartLoading />}>
+        <Await resolve={cart?.cost?.totalAmount}>
+          {(totalAmount) => {
+            return <ShippingBar totalAmount={totalAmount} />;
+          }}
+        </Await>
+      </Suspense>
+
       <CartEmpty hidden={linesCount} onClose={onClose} layout={layout} />
       <CartDetails cart={cart} layout={layout} />
     </>
