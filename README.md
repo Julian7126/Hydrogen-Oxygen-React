@@ -1,4 +1,4 @@
-# [Nombre de tu Proyecto]: Demo Store
+# [NEW STORE JULIAN]:
 
 Este proyecto es una tienda en línea construida utilizando Hydrogen y Oxygen, que son tecnologías en el ecosistema de Shopify para el comercio sin servidor (headless commerce). Hydrogen se integra perfectamente con [Remix](https://remix.run/), el framework web de pila completa de Shopify.
 
