@@ -1,43 +1,41 @@
-# Hydrogen template: Demo Store
+# [NEW STORE JULIAN]:
 
-Hydrogen is Shopify’s stack for headless commerce. Hydrogen is designed to dovetail with [Remix](https://remix.run/), Shopify’s full stack web framework. This template contains a **full-featured setup** of components, queries and tooling to get started with Hydrogen.
+Este proyecto es una tienda en línea construida utilizando Hydrogen y Oxygen, que son tecnologías en el ecosistema de Shopify para el comercio sin servidor (headless commerce). Hydrogen se integra perfectamente con [Remix](https://remix.run/), el framework web de pila completa de Shopify.
 
-[Check out Hydrogen docs](https://shopify.dev/custom-storefronts/hydrogen)
-[Get familiar with Remix](https://remix.run/docs/en/v1)
+Para más detalles, consulte:
+- [Documentación de Hydrogen](https://shopify.dev/custom-storefronts/hydrogen)
+- [Documentación de Remix](https://remix.run/docs/en/v1)
 
-## What's included
+## ¿Qué incluye este proyecto?
 
-- Remix
 - Hydrogen
 - Oxygen
 - Shopify CLI
 - ESLint
 - Prettier
-- GraphQL generator
-- TypeScript and JavaScript flavors
-- Tailwind CSS (via PostCSS)
-- Full-featured setup of components and routes
+- Generador de GraphQL
+- Soporte para TypeScript y JavaScript
+- Tailwind CSS (a través de PostCSS)
+- Conjunto completo de componentes y rutas
 
-## Getting started
+## Cómo empezar
 
-**Requirements:**
+**Requisitos:**
 
-- Node.js version 16.14.0 or higher
-
-```bash
-npm create @shopify/hydrogen@latest -- --template demo-store
-```
-
-Remember to update `.env` with your shop's domain and Storefront API token!
-
-## Building for production
+- Node.js versión 16.14.0 o superior
 
 ```bash
+git clone [URL del repositorio]
+cd [Nombre de tu proyecto]
+npm install
+
+
+
+Compilación para producción
+
 npm run build
-```
 
-## Local development
 
-```bash
+Desarrollo local
+
 npm run dev
-```
