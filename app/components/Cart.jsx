@@ -18,8 +18,9 @@ import ShippingBar from './ShippingBar';
 
 export function Cart({layout, onClose, cart}) {
   const linesCount = Boolean(cart?.lines?.edges?.length || 0);
+  console.log("Cart object:", cart);
   console.log(cart?.cost?.totalAmount);
-
+  console.log("Rendering Cart Component")
   return (
     <>
       <Suspense fallback={<CartLoading />}>

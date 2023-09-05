@@ -5,8 +5,8 @@ export function useIsHydrated() {
   const [isHydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    setHydrated(true);
-  }, []);
+   setHydrated(true)
+  }, []); 
 
   return isHydrated;
 }

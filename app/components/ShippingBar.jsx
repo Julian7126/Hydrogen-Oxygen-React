@@ -6,14 +6,15 @@ const ShippingBar = ({totalAmount}) => {
   const minimumSpend = 20;
   const [amountAway, setAmountAway] = useState(minimumSpend);
   const totalSpend = totalAmount;
-  const [remainingPorcent , setRemainginporcent]= useState(10)
+  const [remainingPorcent , setRemainginporcent]= useState(0)
 
   useEffect(() => {
+ console.log(totalAmount)
     setAmountAway(Number(minimumSpend) - Number(totalSpend.amount));
   }, [totalSpend]);
 
   useEffect(()=>{
- console.log(amountAway) 
+  setRemainginporcent(Number(totalSpend.amount) / minimumSpend * 100)
   },[amountAway])
 
   return (

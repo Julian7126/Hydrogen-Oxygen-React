@@ -1,7 +1,7 @@
-import {useParams, Form, Await, useMatches} from '@remix-run/react';
+import {useParams, Form, Await, useMatches, useFetcher} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
-import {Suspense, useEffect, useMemo} from 'react';
+import {Suspense, useEffect, useMemo, useState} from 'react';
 import {CartForm} from '@shopify/hydrogen';
 import {
   Drawer,
@@ -209,12 +209,38 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 }
 
 function DesktopHeader({isHome, menu, openCart, title}) {
+
+
   const params = useParams();
   const {y} = useWindowScroll();
+
+
+
+
+  const isHydrated = useIsHydrated();
+  const [dateExtractor, setExtractorDate] = useState(null);
+  const fetcher = useFetcher(); // Supongo que esto está definido en otra parte del código
+
+  useEffect(() => {
+    if (fetcher.state === "idle" && fetcher.data == null && isHydrated) {
+      fetcher.load("/pages/announcementbar");
+    }
+  }, [fetcher, isHydrated]);
+
+  useEffect(() => {
+    if (isHydrated) {
+      let extractedDate = new DOMParser()
+        .parseFromString(fetcher.data?.page?.body, "text/html");
+      if (extractedDate?.querySelector("span")?.innerHTML) {
+        setExtractorDate(extractedDate?.querySelector("span")?.innerHTML);
+      }
+    }
+  }, [fetcher.data, isHydrated]);
+
   return (
 
   <>
-   <CustomAnnouncementBar/>
+   <CustomAnnouncementBar extractedDate={dateExtractor}/>
     <header
       role="banner"
       className={`${
