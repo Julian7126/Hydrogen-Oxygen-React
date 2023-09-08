@@ -24,6 +24,9 @@ import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
+import swiperStyles from "./styles/SwiperStyles.css"
+
+
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
@@ -40,9 +43,18 @@ export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
   return false;
 };
 
+
+
+//PRINCIPAL 
+
+
+
+
 export const links = () => {
   return [
     {rel: 'stylesheet', href: styles},
+    {rel: 'stylesheet', href: swiperStyles},
+   
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -52,6 +64,7 @@ export const links = () => {
       href: 'https://shop.app',
     },
     {rel: 'icon', type: 'image/svg+xml', href: favicon},
+  
   ];
 };
 

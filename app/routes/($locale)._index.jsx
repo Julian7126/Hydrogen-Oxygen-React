@@ -11,8 +11,14 @@ import {routeHeaders} from '~/data/cache';
 
 export const headers = routeHeaders;
 
-export async function loader({params, context}) {
+export async function loader({ request, params, context}) {
   const {language, country} = context.storefront.i18n;
+  const searchParams = new URLSearchParams(new URL(request.url).searchParams);
+  const tagFilter = searchParams.get('tag') ? `tag:${searchParams.get('tag')}` : 'tag:premium';
+
+
+
+  console.log(request)
 
   if (
     params.locale &&
@@ -45,6 +51,7 @@ export async function loader({params, context}) {
            */
           country,
           language,
+          tagFilter: tagFilter
         },
       },
     ),
@@ -206,9 +213,9 @@ const COLLECTION_HERO_QUERY = `#graphql
 
 // @see: https://shopify.dev/api/storefront/2023-07/queries/products
 export const HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql
-  query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)
+  query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode, $tagFilter: String )
   @inContext(country: $country, language: $language) {
-    products(first: 8) {
+    products(first: 8 , query: $tagFilter) {
       nodes {
         ...ProductCard
       }

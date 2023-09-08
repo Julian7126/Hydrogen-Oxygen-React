@@ -1,0 +1,63 @@
+/* Estilos avanzados para Swiper */
+.swiper-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .swiper-wrapper {
+    display: flex;
+    transition: all 0.3s ease;
+  }
+  
+  .swiper-slide {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;  /* Define el ancho de cada diapositiva */
+    box-shadow: 0 2px 4px rgba(86, 86, 86, 0.1);
+    border-radius: 12px;
+    margin: 0 16px; /* Espacio entre las diapositivas */
+  }
+  /* Botones de navegación personalizados */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #033954;  /* Celeste claro */
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+  transition: all 0.3s ease-in-out;  /* Transición suave */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #0088cc;  /* Celeste un poco más oscuro al hacer hover */
+  transform: scale(1.1);  /* Agrandar un poco el botón */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);  /* Sombra un poco más pronunciada al hacer hover */
+}
+
+.swiper-button-next {
+  right: 10px;
+ 
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.fa-arrow-right,
+.fa-arrow-left {
+  font-size: 20px;
+  color: white;
+  position: center;
+  margin-top: -5px;
+}
